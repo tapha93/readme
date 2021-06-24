@@ -41,7 +41,7 @@ Pour la configuration du Workflows nous avions deux possibilité:
 
 * La deuxième option et c'est (**celle qui est choisie**) consiste à vider la base de donnée et de faire une nouvelle insertion à chaque intervalle de temps.
 
-Le [![workflows](https://github.com/tapha93/readme/blob/main/images/archtecture.PNG "Wokflows Title Text 1")](https://n8n.datagora.erasme.org/workflow/3)] est constitué des noeuds suivant:
+Le [![workflows](https://github.com/tapha93/readme/blob/main/images/workflow.PNG "Wokflows Title Text 1")](https://n8n.datagora.erasme.org/workflow/3)] est constitué des noeuds suivant:
 
 #### Cron node: ce nœud déclenche le workflow toutes les minutes
 #### Notion node (Toutes les lignes): Ce nœud récupère toutes les lignes de la  base de données.
@@ -87,7 +87,7 @@ La base de données est déjà déployé sur [Rancher](https://rancher.erasme.or
 ### Configuration de la base de donnée Postgres (Insert)
 
 ### ETAPE 1: modification du fichier de configuration
-Vous pouvez visitez la [documentation postgres ](https://doc.ubuntu-fr.org/postgresql).
+Vous pouvez visitez la [documentation postgres ](https://doc.ubuntu-fr.org/postgresql.PNG).
 
 Il faut d'abord modifier le fichier de configuration pour autoriser les connexions via mot de passe chiffré  en remplaçant identsameuser par md5.Ensuite relancer postgres.
 
