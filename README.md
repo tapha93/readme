@@ -1,6 +1,6 @@
 # Guide Backend Datatlas
 ## Introduction
-Datatlas est un projet piloté par Erasme dont l'objectif est de mettre en place un logitiel de  Webmapping permettant à cours termes  de cartographier les differentes industies de la métropole de Lyon et à moyen termes de définir la zone de plantabilité en se basant sur les données de la végétalisation.
+Datatlas est un projet piloté par Erasme dont l'objectif est de mettre en place un logitiel de  Webmapping permettant à cours termes  de cartographier les differentes industries de la métropole de Lyon et à moyen termes de définir la zone de plantabilité en se basant sur les données de la végétalisation.
 
 Dans ce guide nous allons montrer tout d'abord  comment interconnecter notre base de données Notion à celle de Postgis à travers une intégration basé sur [N8N](https://n8n.io/).
 Ensuite voir comment publier nos données en utilisant le serveur cartographique geoserveur.
@@ -8,6 +8,7 @@ Enfin nous allons montrer comment acceder à nos données en utilisant un client
 
 ---
 ## Architecture de la Solution
+La solution que nous avons adopté se base sur notion comme interface de saisie de données.Ces dernières sont stockées dans une base de donnée postGIS à l'aide d'une intégration n8n puis transformées en données spatiales avant d'etre publiées dans un serveur cartographique.Le client openlayers permet d'afficher les différentes couches du serveur sur une interface Web.Pour l'édition,l'analyse et le traitement de données nous avons utilisée le logitiel QGIS.
 ![Architecture](https://github.com/tapha93/readme/blob/main/images/architecture.PNG "Architecture Title Text 1")
 
 ### 1. Intégration Notion-Postgre/PosGIS
@@ -18,12 +19,12 @@ N8n utilise une approche basée sur les nœuds ce qui le rend très polyvalent, 
 
 
 #### -Prérequis
-* Créez une base de données notion. Nous  cette [base de données](https://www.notion.so/erasme/a2d9c5c68f1e47ecbbd666edc3eb6047?v=2fb0f62f6d954f5fafe33ff3bd796ca1 )
+* Créez une base de données notion. Nous avons utilisé cette [base de données](https://www.notion.so/erasme/a2d9c5c68f1e47ecbbd666edc3eb6047?v=2fb0f62f6d954f5fafe33ff3bd796ca1 )
 
-Remarque: Les noms des champs de la base de données notion doivent correspondre à ceux de postgres (cf étape 3)
-Par convention toutes les champs de la BD notion doivent être en minuscule
+Remarque: Les noms des champs de la base de données notion doivent correspondre à ceux de postgres (cf configuration postgres).
+Par convention toutes les champs de la BD notion doivent être en minuscule.
 
-* Créer une nouvelle intégration notion à relier avec la BD notion 
+* Créer une nouvelle intégration notion à relier avec la BD notion.
 
 Vous pouvez suivre la documentaion sur la création d'une [nouvel intégration ici ](https://docs.n8n.io/credentials/notion/#prerequisites)
 
@@ -34,14 +35,13 @@ Remarque: Seuls ceux qui ont un compte administrateur sur notion peuvent le fair
 
 #### -Workflows
 
-Puisque N8N n'offre pas pour le moment la possibilité de faire une mise à jour de la base de données nous avons configuré le workflows de maniére à vider la base donnée et de faire une nouvelle insertion
-
 Pour la configuration du Workflows nous avions deux possibilité:
 * La première consistait à faire une  mise à jour de la base de données à chaque interval de temps pour prendre en compte les nouvelles données insérées(**Pas possible pour le moment puisque N8N n'offre pas l'opération update pour faire une mise à jour de la base de données**)
 
-* La deuxième option et c'est (**celle qui est choisie**) consiste à vider la base de donnée et de faire une nouvelle insertion à chaque intervalle de temps.
+* La deuxième option  (**celle qui est choisie**) consiste à vider la base de donnée et de faire une nouvelle insertion à chaque intervalle de temps.
+[![workflows](https://github.com/tapha93/readme/blob/main/images/workflow.PNG "Wokflows Title Text 1")](https://n8n.datagora.erasme.org/workflow/3)
 
-Le [![workflows](https://github.com/tapha93/readme/blob/main/images/workflow.PNG "Wokflows Title Text 1")](https://n8n.datagora.erasme.org/workflow/3)] est constitué des noeuds suivant:
+Le workflows est constitué des noeuds suivant:
 
 #### Cron node: ce nœud déclenche le workflow toutes les minutes
 #### Notion node (Toutes les lignes): Ce nœud récupère toutes les lignes de la  base de données.
@@ -63,7 +63,8 @@ Le [![workflows](https://github.com/tapha93/readme/blob/main/images/workflow.PNG
 
 En cliquant sur le noeud vous devez fournir les information suivant:
 
-* Notion API: Vous devez ajouter la clé de l’API ![API KEY](https://github.com/tapha93/readme/blob/main/images/APIKEY.PNG "API KEY Title Text 1") fournie lors de la création de l’intégration et lui donner un nom.
+* Notion API: Vous devez ajouter la clé de l’API fournie lors de la création de l’intégration et lui donner un nom.  
+![API KEY](https://github.com/tapha93/readme/blob/main/images/APIKEY.PNG "API KEY Title Text 1") 
 
 * Resource:Vous choisissez la ressources à afficher.Ici on affiche la page contenant la BD notion Database Page.
 * Opération:Choisissez l’opération à effectuer.Ici on affiche toutes les lignes de la base de données en choisissant l’opération GetAll
@@ -87,7 +88,7 @@ La base de données est déjà déployé sur [Rancher](https://rancher.erasme.or
 ### Configuration de la base de donnée Postgres (Insert)
 
 ### ETAPE 1: modification du fichier de configuration
-Vous pouvez visitez la [documentation postgres ](https://doc.ubuntu-fr.org/postgresql.PNG).
+Vous pouvez visitez la documentation postgres [documentation postgres ](https://doc.ubuntu-fr.org/postgresql.PNG).
 
 Il faut d'abord modifier le fichier de configuration pour autoriser les connexions via mot de passe chiffré  en remplaçant identsameuser par md5.Ensuite relancer postgres.
 
@@ -95,7 +96,7 @@ Il faut d'abord modifier le fichier de configuration pour autoriser les connexio
        nano  /usr/local/pgsql/data/pg_hba.conf
        sudo service postgresql restart
 ```
-Voici la ![configuration](https://github.com/tapha93/readme/blob/main/images/fichierconf.PNG "conf Title Text 1")
+![configuration](https://github.com/tapha93/readme/blob/main/images/fichierconf.PNG "conf Title Text 1")
 
 ### Etape 2: Créer un Super user(erasme)
 
@@ -148,9 +149,10 @@ Postgres fournit 3 fonctions pour créer une géométrie sur les données:
 
 ### Configuration du noeud
 
-En cliquant sur le noeud vous devez fournir les information suivants
+En cliquant sur le noeud vous devez fournir les information suivants:
 
-* Postgres: Donner les ![informations de connexion sur la base de données](https://github.com/tapha93/readme/blob/main/images/infoconnexion.PNG "connexion Title Text 1")
+* Postgres: Donner les informations de connexion sur la base de données:
+![informations de connexion sur la base de données](https://github.com/tapha93/readme/blob/main/images/infoconnexion.PNG "connexion Title Text 1")
 * Operation: Sélectionner l’opération à effectuer(Insert)
 * Schema: Choisissez le schéma de la base(Public)
 * Table:le nom de la table(carto)
@@ -188,7 +190,7 @@ Pour créer un espace de travail vous devez cliquer sur espace de travail pour a
 * Son nom: erasme
 * l'URIde l'espace de nommage :http://geoserver.ud-reproducibility.datagora.erasme.org/geoserver/web/ 
 
-comme le montre la figure [espace-travail](https://github.com/tapha93/readme/blob/main/images/espacetravail.PNG)
+comme le montre la figure ![espace-travail](https://github.com/tapha93/readme/blob/main/images/espacetravail.PNG)
 
 ### Etape2: Création d'un entrepot de donnée
 Pour créer un entrepot de donnée vous devez:
