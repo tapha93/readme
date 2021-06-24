@@ -10,7 +10,7 @@ Enfin nous allons montrer comment acceder à nos données en utilisant un client
 ## Architecture de la Solution
 ![Architecture](/images/archtecture.png "Architecture Title Text 1")
 
-1. Intégration Notion-Postgre/PosGIS
+### 1. Intégration Notion-Postgre/PosGIS
 
 Pour l’automatisation nous avons utilisé n8n qui  est un outil d'automatisation de flux de travail extensible,open source et disponible  pour l'auto-hébergement .
 N8n utilise une approche basée sur les nœuds ce qui le rend très polyvalent, et permet de connecter des outils entre eux.
@@ -18,7 +18,7 @@ N8n utilise une approche basée sur les nœuds ce qui le rend très polyvalent, 
 
 
 #### -Prérequis
-Créez une base de données notion. Nous  cette [base de données](https://www.notion.so/erasme/a2d9c5c68f1e47ecbbd666edc3eb6047?v=2fb0f62f6d954f5fafe33ff3bd796ca1 )
+* Créez une base de données notion. Nous  cette [base de données](https://www.notion.so/erasme/a2d9c5c68f1e47ecbbd666edc3eb6047?v=2fb0f62f6d954f5fafe33ff3bd796ca1 )
 
 Remarque: Les noms des champs de la base de données notion doivent correspondre à ceux de postgres (cf étape 3)
 Par convention toutes les champs de la BD notion doivent être en minuscule
@@ -32,7 +32,7 @@ Remarque: Seuls ceux qui ont un compte administrateur sur notion peuvent le fair
 
 * Créer une nouvelle base de données Postgres avec les mêmes champs que ceux de notion.
 
-- Workflows
+#### -Workflows
 
 Puisque N8N n'offre pas pour le moment la possibilité de faire une mise à jour de la base de données nous avons configuré le workflows de maniére à vider la base donnée et de faire une nouvelle insertion
 
@@ -86,7 +86,7 @@ La base de données est déjà déployé sur [Rancher](https://rancher.erasme.or
 
 ### Configuration de la base de donnée Postgres (Insert)
 
-#### ETAPE 1: modification du fichier de configuration
+### ETAPE 1: modification du fichier de configuration
 Vous pouvez visitez la [documentation postgres ](https://doc.ubuntu-fr.org/postgresql).
 
 Il faut d'abord modifier le fichier de configuration pour autoriser les connexions via mot de passe chiffré  en remplaçant identsameuser par md5.Ensuite relancer postgres.
@@ -176,7 +176,7 @@ id,longitude,latitude,expertise,gouvernance,country,public,web,offre,title
 
 ---
 
-2. Publication des données sur géoserver
+### 2. Publication des données sur géoserver
 
 Dans cette partie nous allons d'abord créer un espace de travail puis un entrepot de donnée et enfin une couche de donnée sur le [geoserver](http://geoserver.ud-reproducibility.datagora.erasme.org/geoserver/web/wicket/bookmarkable/org.geoserver.web.GeoServerLoginPage)  déjà déploiyé sur Rancher.
 
@@ -227,7 +227,7 @@ Pour publier une couches de donnée vous deves
 * Donnez le système de [cordonnée(Lambert 93 pour la france)](/images/systéme de coordonné)
 * Donnez l'![emprise de la donnée](/images/emprise) en choississant basées sur les données et calculées sur les emprises natives respectivement puis valider.
 
-3. Client cartographique Openlayers
+### 3. Client cartographique Openlayers
 
 Le client carthographique se connecte en sur le geoserver pour télécharger les couches de donées en utilisant le protocole WMS/WFS
 
