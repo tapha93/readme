@@ -182,7 +182,7 @@ id,longitude,latitude,expertise,gouvernance,country,public,web,offre,title
 
 Dans cette partie nous allons d'abord créer un espace de travail puis un entrepot de donnée et enfin une couche de donnée sur le [geoserver](http://geoserver.ud-reproducibility.datagora.erasme.org/geoserver/web/wicket/bookmarkable/org.geoserver.web.GeoServerLoginPage)  déjà déploiyé sur Rancher.
 
-Géoserver permet de manipuler differents types de données comme le montre ![ce schema](https://github.com/tapha93/readme/blob/main/images/typesdonnéesgéoserver.PNG)
+Géoserver permet de manipuler differents types de données comme le montre ce schema ![ce schema](https://github.com/tapha93/readme/blob/main/images/typesdonnéesgéoserver.png)
 
 ### Etape1: Création d'un espace de travail
 Pour créer un espace de travail vous devez cliquer sur espace de travail pour ajouter un nouveau en  donnant:
@@ -190,7 +190,7 @@ Pour créer un espace de travail vous devez cliquer sur espace de travail pour a
 * Son nom: erasme
 * l'URIde l'espace de nommage :http://geoserver.ud-reproducibility.datagora.erasme.org/geoserver/web/ 
 
-comme le montre la figure ![espace-travail](https://github.com/tapha93/readme/blob/main/images/espacetravail.PNG)
+comme le montre cette figure ![espace-travail](https://github.com/tapha93/readme/blob/main/images/espacetravail.PNG)
 
 ### Etape2: Création d'un entrepot de donnée
 Pour créer un entrepot de donnée vous devez:
@@ -210,7 +210,8 @@ Pour créer un entrepot de donnée vous devez:
  - user:datatlas
  - passwd: ...
 
-comme le montre la ![figure](https://github.com/tapha93/readme/blob/main/images/entrepot.PNG)suivante:
+comme le montre la figure suivante:
+![figure](https://github.com/tapha93/readme/blob/main/images/entrepot.PNG)
 
 ### Etape3 : Création d'une couche de données
 
@@ -220,14 +221,18 @@ comme le montre la ![figure](https://github.com/tapha93/readme/blob/main/images/
 * Ensuite selectionner ajouter une nouvelle ressouches.
 * Enfin choisissez votre entrepot de donnée
 
-Une fenetre s'ouvre et vous montre toutes les  des bases données présentes.Vous pouvez maintenant choisir de publier une base de donnée  sur la ![listes](https://github.com/tapha93/readme/blob/main/images/listesbd.PNG).
+Une fenetre s'ouvre et vous montre toutes les  des bases données présentes.Vous pouvez maintenant choisir de publier une base de donnée  sur la liste.
+![listes](https://github.com/tapha93/readme/blob/main/images/listesbd.PNG).
 
 - Publication de couches
 
-Pour publier une couches de donnée vous deves
-* Donnez les information sur la ![base de donnée(nom,Titre)](https://github.com/tapha93/readme/blob/main/images/infodonné.PNG)
-* Donnez le système de [cordonnée(Lambert 93 pour la france)](/images/systéme de coordonné)
-* Donnez l'![emprise de la donnée](https://github.com/tapha93/readme/blob/main/images/emprise.PNG) en choississant basées sur les données et calculées sur les emprises natives respectivement puis valider.
+Pour publier une couches de donnée vous devez
+* Donnez les information sur la base de données:
+![base de donnée(nom,Titre)](https://github.com/tapha93/readme/blob/main/images/infodonné.PNG)
+* Donnez le système de cordonnée(Lambert 93 pour la france)
+![cordonnée(Lambert 93 pour la france)](https://github.com/tapha93/readme/blob/main/images/systéme de coordonné)
+* Donnez l'emprise de la donnée en choississant "basées sur les données" et "calculées sur les emprises natives" respectivement puis valider.
+![emprise de la donnée](https://github.com/tapha93/readme/blob/main/images/emprise.PNG)
 
 ### 3. Client cartographique Openlayers
 
