@@ -8,7 +8,7 @@ Enfin nous allons montrer comment acceder à nos données en utilisant un client
 
 ---
 ## Architecture de la Solution
-![Architecture](https://github.com/tapha93/readme/blob/main/images/archtecture.PNG "Architecture Title Text 1")
+![Architecture](https://github.com/tapha93/readme/blob/main/images/architecture.PNG "Architecture Title Text 1")
 
 ### 1. Intégration Notion-Postgre/PosGIS
 
@@ -223,7 +223,7 @@ Une fenetre s'ouvre et vous montre toutes les  des bases données présentes.Vou
 - Publication de couches
 
 Pour publier une couches de donnée vous deves
-* Donnez les information sur la ![base de donnée(nom,Titre)](https://github.com/tapha93/readme/blob/main/images/infodonné)
+* Donnez les information sur la ![base de donnée(nom,Titre)](https://github.com/tapha93/readme/blob/main/images/infodonné.PNG)
 * Donnez le système de [cordonnée(Lambert 93 pour la france)](/images/systéme de coordonné)
 * Donnez l'![emprise de la donnée](https://github.com/tapha93/readme/blob/main/images/emprise.PNG) en choississant basées sur les données et calculées sur les emprises natives respectivement puis valider.
 
