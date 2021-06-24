@@ -8,7 +8,7 @@ Enfin nous allons montrer comment acceder à nos données en utilisant un client
 
 ---
 ## Architecture de la Solution
-![Architecture](/images/archtecture.png "Architecture Title Text 1")
+![Architecture](https://github.com/tapha93/readme/blob/main/images/archtecture.png "Architecture Title Text 1")
 
 ### 1. Intégration Notion-Postgre/PosGIS
 
@@ -41,7 +41,7 @@ Pour la configuration du Workflows nous avions deux possibilité:
 
 * La deuxième option et c'est (**celle qui est choisie**) consiste à vider la base de donnée et de faire une nouvelle insertion à chaque intervalle de temps.
 
-Le [![workflows](/images/archtecture.png "Wokflows Title Text 1")](https://n8n.datagora.erasme.org/workflow/3)] est constitué des noeuds suivant:
+Le [![workflows](https://github.com/tapha93/readme/blob/main/images/archtecture.png "Wokflows Title Text 1")](https://n8n.datagora.erasme.org/workflow/3)] est constitué des noeuds suivant:
 
 #### Cron node: ce nœud déclenche le workflow toutes les minutes
 #### Notion node (Toutes les lignes): Ce nœud récupère toutes les lignes de la  base de données.
@@ -57,19 +57,19 @@ Le [![workflows](/images/archtecture.png "Wokflows Title Text 1")](https://n8n.d
 * Ajouter un cron times pour l'exécution du  workflow.
 * Nous avons choisi  every minutes qui permet d'exécuter le workflow chaque minute.
 
-![Configuration noeud Cron](/images/cron.png "Cron Title Text 1")
+![Configuration noeud Cron](https://github.com/tapha93/readme/blob/main/images/cron.png "Cron Title Text 1")
 
 ## Notion(Toutes les lignes):
 
 En cliquant sur le noeud vous devez fournir les information suivant:
 
-* Notion API: Vous devez ajouter la clé de l’API ![API KEY](/images/APIKEY.png "API KEY Title Text 1") fournie lors de la création de l’intégration et lui donner un nom.
+* Notion API: Vous devez ajouter la clé de l’API ![API KEY](https://github.com/tapha93/readme/blob/main/images/APIKEY.png "API KEY Title Text 1") fournie lors de la création de l’intégration et lui donner un nom.
 
 * Resource:Vous choisissez la ressources à afficher.Ici on affiche la page contenant la BD notion Database Page.
 * Opération:Choisissez l’opération à effectuer.Ici on affiche toutes les lignes de la base de données en choisissant l’opération GetAll
 * Database ID:On sélectionne  la base de données notion pour l’intégration.
 
-![Configuration noeud Notion](/images/notion.png "Notion Title Text 1")
+![Configuration noeud Notion](https://github.com/tapha93/readme/blob/main/images/notion.png "Notion Title Text 1")
 
 ## Set
 Ce noeud permet de recréer la base de dooné supprimée en insérant les nouvelles lignes.
@@ -78,7 +78,7 @@ Ce noeud permet de recréer la base de dooné supprimée en insérant les nouvel
  * Name:ID permet de selectioner toutes la base de donnée
  * Value: 0 permet de filtrer les champs à inserer dans la base de données postgres(laisser ce champs à 0 si vous voullez selectionner toutes la bases).
 
- ![Configuration noeud Set](/images/set.png "Set Title Text 1")
+ ![Configuration noeud Set](https://github.com/tapha93/readme/blob/main/images/set.png "Set Title Text 1")
 
  ## Postgres(Insert):
 Avant de configurer ce noeud vous devez d'abord créer une base de données postgis avec les memes champs que ceux sur notion. 
@@ -95,7 +95,7 @@ Il faut d'abord modifier le fichier de configuration pour autoriser les connexio
        nano  /usr/local/pgsql/data/pg_hba.conf
        sudo service postgresql restart
 ```
-Voici la ![configuration](/images/fichierconf.png "conf Title Text 1")
+Voici la ![configuration](https://github.com/tapha93/readme/blob/main/images/fichierconf.png "conf Title Text 1")
 
 ### Etape 2: Créer un Super user(erasme)
 
@@ -150,7 +150,7 @@ Postgres fournit 3 fonctions pour créer une géométrie sur les données:
 
 En cliquant sur le noeud vous devez fournir les information suivants
 
-* Postgres: Donner les ![informations de connexion sur la base de données](/images/infoconnexion.png "connexion Title Text 1")
+* Postgres: Donner les ![informations de connexion sur la base de données](https://github.com/tapha93/readme/blob/main/images/infoconnexion.png "connexion Title Text 1")
 * Operation: Sélectionner l’opération à effectuer(Insert)
 * Schema: Choisissez le schéma de la base(Public)
 * Table:le nom de la table(carto)
@@ -160,7 +160,7 @@ id,longitude,latitude,expertise,gouvernance,country,public,web,offre,title
 ```
 * Return Fields:Choisir les champs de retour( l’option * affiche tous les champs)
 
-![Configuration noeud Postgres (Insert)](/images/postgresinsert.png "insertion Title Text 1")
+![Configuration noeud Postgres (Insert)](https://github.com/tapha93/readme/blob/main/images/postgresinsert.png "insertion Title Text 1")
 
 ### Configuration de la base de donnée Postgres1 (Execute Query)
 
@@ -172,7 +172,7 @@ id,longitude,latitude,expertise,gouvernance,country,public,web,offre,title
    ```
 
 
-![Configuration noeud Postgres (Insert)](/images/postgres1.png "insertion Title Text 1")
+![Configuration noeud Postgres (Insert)](https://github.com/tapha93/readme/blob/main/images/postgres1.png "insertion Title Text 1")
 
 ---
 
@@ -180,7 +180,7 @@ id,longitude,latitude,expertise,gouvernance,country,public,web,offre,title
 
 Dans cette partie nous allons d'abord créer un espace de travail puis un entrepot de donnée et enfin une couche de donnée sur le [geoserver](http://geoserver.ud-reproducibility.datagora.erasme.org/geoserver/web/wicket/bookmarkable/org.geoserver.web.GeoServerLoginPage)  déjà déploiyé sur Rancher.
 
-Géoserver permet de manipuler differents types de données comme le montre ![ce schema](/images/typesdonnéesgéoserver)
+Géoserver permet de manipuler differents types de données comme le montre ![ce schema](https://github.com/tapha93/readme/blob/main/images/typesdonnéesgéoserver)
 
 ### Etape1: Création d'un espace de travail
 Pour créer un espace de travail vous devez cliquer sur espace de travail pour ajouter un nouveau en  donnant:
@@ -188,7 +188,7 @@ Pour créer un espace de travail vous devez cliquer sur espace de travail pour a
 * Son nom: erasme
 * l'URIde l'espace de nommage :http://geoserver.ud-reproducibility.datagora.erasme.org/geoserver/web/ 
 
-comme le montre la figure [espace-travail](/images/espacetravail)
+comme le montre la figure [espace-travail](https://github.com/tapha93/readme/blob/main/images/espacetravail)
 
 ### Etape2: Création d'un entrepot de donnée
 Pour créer un entrepot de donnée vous devez:
@@ -208,7 +208,7 @@ Pour créer un entrepot de donnée vous devez:
  - user:datatlas
  - passwd: ...
 
-comme le montre la ![figure](/images/entrepot)suivante:
+comme le montre la ![figure](https://github.com/tapha93/readme/blob/main/images/entrepot)suivante:
 
 ### Etape3 : Création d'une couche de données
 
@@ -218,14 +218,14 @@ comme le montre la ![figure](/images/entrepot)suivante:
 * Ensuite selectionner ajouter une nouvelle ressouches.
 * Enfin choisissez votre entrepot de donnée
 
-Une fenetre s'ouvre et vous montre toutes les  des bases données présentes.Vous pouvez maintenant choisir de publier une base de donnée  sur la ![listes](/images/listesbd).
+Une fenetre s'ouvre et vous montre toutes les  des bases données présentes.Vous pouvez maintenant choisir de publier une base de donnée  sur la ![listes](https://github.com/tapha93/readme/blob/main/images/listesbd).
 
 - Publication de couches
 
 Pour publier une couches de donnée vous deves
-* Donnez les information sur la ![base de donnée(nom,Titre)](/images/infodonné)
+* Donnez les information sur la ![base de donnée(nom,Titre)](https://github.com/tapha93/readme/blob/main/images/infodonné)
 * Donnez le système de [cordonnée(Lambert 93 pour la france)](/images/systéme de coordonné)
-* Donnez l'![emprise de la donnée](/images/emprise) en choississant basées sur les données et calculées sur les emprises natives respectivement puis valider.
+* Donnez l'![emprise de la donnée](https://github.com/tapha93/readme/blob/main/images/emprise) en choississant basées sur les données et calculées sur les emprises natives respectivement puis valider.
 
 ### 3. Client cartographique Openlayers
 
